@@ -1,0 +1,150 @@
+<div *ngIf="data" class="main-body my-8 mx-4 px-4">
+  <div class="p-4 mx-2 my-12 bg-white rounded-lg shadow-xl">
+    <div class="text-xl" style="font-family: 'Avenir-Roman'">
+      Statistics for
+      <b class="text-gray-800">{{ customerName || "student" }}</b>
+    </div>
+    <div class="text-md text-gray-700">Customer ID: {{ customerId }}</div>
+  </div>
+
+  <div class="grid grid-cols-2">
+    <div
+      class="col-span-1 pt-4 ml-2 mr-4 mb-8 h-32 rounded-lg shadow-xl text-center text-white bg-red-400"
+      style="
+        background-image: linear-gradient(135deg, #abdcff 10%, #0396ff 100%);
+      "
+    >
+      <div class="text-5xl">{{ data.totalGames || 0 }}</div>
+      <div
+        class="text-xs uppercase tracking-widest avenir-b"
+        style="font-family: 'Avenir-Roman'"
+      >
+        <b>Total games</b>
+      </div>
+    </div>
+    <div
+      class="col-span-1 pt-4 mr-2 ml-4 mb-8 h-32 rounded-lg shadow-xl text-center text-white bg-red-400"
+      style="
+        background-image: linear-gradient(
+          45deg,
+          #ff9a9e 0%,
+          #fad0c4 99%,
+          #fad0c4 100%
+        );
+      "
+    >
+      <div class="text-5xl">
+        {{ data.averageScore || 0 }}<span class="text-2xl">/3</span>
+      </div>
+      <div
+        class="text-xs uppercase tracking-widest avenir-b"
+        style="font-family: 'Avenir-Roman'"
+      >
+        <b>Average Score</b>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-4">
+    <!-- happy -->
+    <div
+      class="relative col-span-1 pt-4 mx-2 my-4 h-32 bg-white rounded-lg shadow-xl text-center border-solid border-green-400 border-2"
+    >
+      <div
+        *ngIf="lowest === 'joy'"
+        class="absolute top-0 right-0 rounded-full bg-red-500 p-1 mt-2 mr-2 text-xs text-gray-100"
+      ></div>
+
+      <div
+        *ngIf="highest === 'joy'"
+        class="absolute top-0 right-0 rounded-full bg-green-500 p-1 mt-2 mr-2 text-xs text-gray-100"
+      ></div>
+
+      <div class="text-5xl text-gray-700">
+        {{ data.emotionCorrectness.joy.percentage || 0
+        }}<span class="text-2xl">%</span>
+      </div>
+      <div
+        class="text-xs uppercase tracking-widest text-green-400"
+        style="font-family: 'Avenir-Roman'"
+      >
+        Happy
+      </div>
+    </div>
+
+    <!-- sad -->
+    <div
+      class="relative col-span-1 pt-4 mx-2 my-4 h-32 bg-white rounded-lg shadow-xl text-center border-solid border-orange-400 border-2"
+    >
+      <div
+        *ngIf="lowest === 'sadness'"
+        class="absolute top-0 right-0 rounded-full bg-red-500 p-1 mt-2 mr-2 text-xs text-gray-100"
+      ></div>
+
+      <div
+        *ngIf="highest === 'sadness'"
+        class="absolute top-0 right-0 rounded-full bg-green-500 p-1 mt-2 mr-2 text-xs text-gray-100"
+      ></div>
+      <div class="text-5xl text-gray-700">
+        {{ data.emotionCorrectness.sadness.percentage || 0
+        }}<span class="text-2xl">%</span>
+      </div>
+      <div
+        class="text-xs uppercase tracking-widest text-orange-400"
+        style="font-family: 'Avenir-Roman'"
+      >
+        Sad
+      </div>
+    </div>
+
+    <!-- confused -->
+    <div
+      class="relative col-span-1 pt-4 mx-2 my-4 h-32 bg-white rounded-lg shadow-xl text-center border-solid border-blue-400 border-2"
+    >
+      <div
+        *ngIf="lowest === 'tentative'"
+        class="absolute top-0 right-0 rounded-full bg-red-500 p-1 mt-2 mr-2 text-xs text-gray-100"
+      ></div>
+
+      <div
+        *ngIf="highest === 'tentative'"
+        class="absolute top-0 right-0 rounded-full bg-green-500 p-1 mt-2 mr-2 text-xs text-gray-100"
+      ></div>
+      <div class="text-5xl text-gray-700">
+        {{ data.emotionCorrectness.tentative.percentage || 0
+        }}<span class="text-2xl">%</span>
+      </div>
+      <div
+        class="text-xs uppercase tracking-widest text-blue-400"
+        style="font-family: 'Avenir-Roman'"
+      >
+        Confused
+      </div>
+    </div>
+
+    <!-- anger -->
+    <div
+      class="relative col-span-1 pt-4 mx-2 my-4 h-32 bg-white rounded-lg shadow-xl text-center border-solid border-red-400 border-2"
+    >
+      <div
+        *ngIf="lowest === 'anger'"
+        class="absolute top-0 right-0 rounded-full bg-red-500 p-1 mt-2 mr-2 text-xs text-gray-100"
+      ></div>
+
+      <div
+        *ngIf="highest === 'anger'"
+        class="absolute top-0 right-0 rounded-full bg-green-500 p-1 mt-2 mr-2 text-xs text-gray-100"
+      ></div>
+      <div class="text-5xl text-gray-700">
+        {{ data.emotionCorrectness.anger.percentage || 0
+        }}<span class="text-2xl">%</span>
+      </div>
+      <div
+        class="text-xs uppercase tracking-widest text-red-400"
+        style="font-family: 'Avenir-Roman'"
+      >
+        Anger
+      </div>
+    </div>
+  </div>
+</div>
